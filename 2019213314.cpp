@@ -30,8 +30,11 @@ int main(){
 		printf("\n(3) Exit");
 		printf("\nPlease select your option: ");
 		opt=0;
-		scanf("%d",&opt);
-		getchar(); // to accept '\n'.
+		while(!scanf("%d",&opt)){ 
+			fflush(stdin);
+			break;// repeat to the menu if not a number
+		}
+		fflush(stdin);
 		switch(opt){
 			case 1:
 			newTest();
@@ -85,10 +88,11 @@ void newTest(){
 	
 	
 	for (int i=0;i<10;i++){
-		do{
-			printf("(%d) %d %c %d = ",quests[i].no,quests[i].num1,quests[i].readableOperat,quests[i].num2);
-			scanf("%d",&quests[i].inputAns);
-		}while(getchar()!='\n'); // to accept '\n' and prevent other char being input resulting bug.
+		printf("(%d) %d %c %d = ",quests[i].no,quests[i].num1,quests[i].readableOperat,quests[i].num2);
+		while(!scanf("%d",&quests[i].inputAns)){ // repeat inputing when input isn't digit
+			fflush(stdin); 
+			printf("Invaild input. Try again -> =");
+		}
 	}
 	endTime=time(0);
 	
@@ -102,7 +106,9 @@ void newTest(){
 	printf("\n============================\nYour score: %d\nTime consumption: %d seconds.",score,timeUsed);
 	fprintf(recordFile,"%s  %d  %d seconds\n",idNum,score,timeUsed);
 	fclose(recordFile);
+	
 	printf("\n\nYour score has been saved successfully.\nPress ENTER to back to main menu...");
+	fflush(stdin);
 	getchar();
 }
 
