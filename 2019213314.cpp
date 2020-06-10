@@ -20,7 +20,7 @@ int main(){
 	int *opt; // have to use pointer variable
 	do{
 		printf("Login -- Math Practicing Program\n");
-		printf("Please input your ID no: ");
+		printf("\nPlease input your ID no: ");
 		gets(idNum);
 	}while (idCheck(idNum)); // repeat inputing when invalid.
 	
@@ -65,7 +65,7 @@ int idCheck(char idNum[10]){
 		if(!(idNum[i]>='0' && idNum[i]<='9')) isInvalid=1; // change 'isInvalid' when the next 4 chars aren't digits.
 	}
 	if (idNum[6]!='\0') isInvalid=1; // change 'isInvalid' when the idNum longer than 6 chars.
-	if (isInvalid == 1)printf("ID Number invalid.\n");
+	if (isInvalid == 1)printf("ID Number invalid.\n\n");
 	return isInvalid;
 }
 
