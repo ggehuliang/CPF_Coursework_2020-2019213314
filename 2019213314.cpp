@@ -19,6 +19,7 @@ struct QUESTION{
 int main(){
 	int *opt; // have to use pointer variable
 	do{
+		printf("Login -- Math Practicing Program\n");
 		printf("Please input your ID no: ");
 		gets(idNum);
 	}while (idCheck(idNum)); // repeat inputing when invalid.
@@ -63,7 +64,7 @@ int idCheck(char idNum[10]){
 	for (i=2;i<6;i++){
 		if(!(idNum[i]>='0' && idNum[i]<='9')) isInvalid=1; // change 'isInvalid' when the next 4 chars aren't digits.
 	}
-	if (idNum[6]!='\0') isInvalid=1; // change 'isInvalid' when the idNum longer then 6 chars.
+	if (idNum[6]!='\0') isInvalid=1; // change 'isInvalid' when the idNum longer than 6 chars.
 	if (isInvalid == 1)printf("ID Number invalid.\n");
 	return isInvalid;
 }
@@ -71,7 +72,6 @@ int idCheck(char idNum[10]){
 void newTest(){
 	FILE *recordFile;
 	time_t startTime,endTime;
-	char readableOperator;
 	struct QUESTION quests[10];
 	int score = 0;
 	int timeUsed;
