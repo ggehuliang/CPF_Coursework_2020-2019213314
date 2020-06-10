@@ -17,7 +17,7 @@ struct QUESTION{
 };
 
 int main(){
-	int opt;
+	int *opt; // have to use pointer variable
 	do{
 		printf("Please input your ID no: ");
 		gets(idNum);
@@ -29,13 +29,14 @@ int main(){
 		printf("\n(2) Check scores");
 		printf("\n(3) Exit");
 		printf("\nPlease select your option: ");
-		opt=0;
-		while(!scanf("%d",&opt)){ 
+		*opt=0;
+		while(!scanf("%d",opt)){ 
 			fflush(stdin);
+			printf("Invaild input. Try again -> :");
 			break;// repeat to the menu if not a number
 		}
 		fflush(stdin);
-		switch(opt){
+		switch(*opt){
 			case 1:
 			newTest();
 			break;
@@ -192,7 +193,8 @@ void checkScores(){
 	}
 	printf("\nYour previous records are:\n");
 	
-	while(!feof(inRecordFile)){
+	while(!feof(inRecordFile)){ // continue reading when EOF is not reached
+		
 		memset(records,0,sizeof(records));
 		fgets(records,sizeof(records)-1,inRecordFile); // read file line by line.
 		
